@@ -86,14 +86,16 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         CarouselSlider(
           items: child,
-          autoPlay: false,
-          viewportFraction: 1.0,
-          aspectRatio: 2.0,
-          onPageChanged: (index) {
-            setState(() {
-              _current = index;
-            });
-          },
+          options: CarouselOptions(
+            autoPlay: true,
+            viewportFraction: 1.0,
+            aspectRatio: 2.0,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            },
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
