@@ -124,6 +124,7 @@ class _HomePageState extends State<HomePage> {
                     return CustomCard(
                       mealsName: snapshot.data.meals[index].strMeal,
                       imageUrl: snapshot.data.meals[index].strMealThumb,
+                      onTap: () {},
                     );
                   },
                 );
@@ -189,6 +190,7 @@ class _HomePageState extends State<HomePage> {
                     return CustomCard(
                       mealsName: snapshot.data.meals[index].strMeal,
                       imageUrl: snapshot.data.meals[index].strMealThumb,
+                      onTap: () {},
                     );
                   },
                 );
