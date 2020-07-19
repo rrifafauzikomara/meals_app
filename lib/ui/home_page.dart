@@ -3,6 +3,7 @@ import 'package:mealsapp/common/color_palettes.dart';
 import 'package:mealsapp/common/sizes.dart';
 import 'package:mealsapp/network/api/api_provider.dart';
 import 'package:mealsapp/network/model/categories.dart';
+import 'package:mealsapp/network/model/meals.dart';
 import 'package:mealsapp/widget/banner.dart';
 import 'package:mealsapp/widget/card.dart';
 import 'package:mealsapp/widget/loading.dart';
@@ -106,9 +107,34 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Container(
-          child: CustomCard(
-            imageUrl: 'https://placeimg.com/640/480/any',
-            mealsName: "Pizza",
+          width: Sizes.width(context),
+          height: Sizes.width(context) / 1.8,
+          child: FutureBuilder(
+            future: MealsApi().mealsList("Seafood"),
+            builder: (context, AsyncSnapshot<MealsResult> snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: snapshot.data.meals.length > 5 ? 5 : snapshot.data.meals.length,
+                  itemBuilder: (context, index) {
+                    return CustomCard(
+                      mealsName: snapshot.data.meals[index].strMeal,
+                      imageUrl: snapshot.data.meals[index].strMealThumb,
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else {
+                return Container(
+                  width: Sizes.width(context),
+                  height: Sizes.width(context) / 2,
+                  child: LoadingIndicator(),
+                );
+              }
+            },
           ),
         ),
       ],
@@ -144,9 +170,34 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Container(
-          child: CustomCard(
-            imageUrl: 'https://placeimg.com/640/480/any',
-            mealsName: "Burger",
+          width: Sizes.width(context),
+          height: Sizes.width(context) / 1.8,
+          child: FutureBuilder(
+            future: MealsApi().mealsList("Dessert"),
+            builder: (context, AsyncSnapshot<MealsResult> snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: snapshot.data.meals.length > 5 ? 5 : snapshot.data.meals.length,
+                  itemBuilder: (context, index) {
+                    return CustomCard(
+                      mealsName: snapshot.data.meals[index].strMeal,
+                      imageUrl: snapshot.data.meals[index].strMealThumb,
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else {
+                return Container(
+                  width: Sizes.width(context),
+                  height: Sizes.width(context) / 2,
+                  child: LoadingIndicator(),
+                );
+              }
+            },
           ),
         ),
       ],

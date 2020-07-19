@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mealsapp/common/color_palettes.dart';
 import 'package:mealsapp/common/sizes.dart';
+
+import 'loading.dart';
 
 class CustomCard extends StatelessWidget {
   final String imageUrl, mealsName;
@@ -20,11 +23,13 @@ class CustomCard extends StatelessWidget {
             Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                child: Image.network(
-                  imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
                   height: Sizes.width(context) / 1.8,
                   width: Sizes.width(context) / 2.5,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) => LoadingIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             ),
