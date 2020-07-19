@@ -25,6 +25,7 @@ class _CustomBannerState extends State<CustomBanner> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        // Banner
         Container(
           height: Sizes.width(context) / 2,
           child: CarouselSlider(
@@ -51,6 +52,8 @@ class _CustomBannerState extends State<CustomBanner> {
             ],
           ),
         ),
+
+        // Dot Indicator of Banner
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: widget.snapshot.data.categories.map((url) {
