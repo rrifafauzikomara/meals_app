@@ -5,15 +5,15 @@ class MealsResult {
 
   MealsResult.fromJson(Map<String, dynamic> json) {
     if (json['meals'] != null) {
-      meals = new List<Meals>();
+      meals = List<Meals>();
       json['meals'].forEach((v) {
-        meals.add(new Meals.fromJson(v));
+        meals.add(Meals.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.meals != null) {
       data['meals'] = this.meals.map((v) => v.toJson()).toList();
     }
@@ -35,7 +35,7 @@ class Meals {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['strMeal'] = this.strMeal;
     data['strMealThumb'] = this.strMealThumb;
     data['idMeal'] = this.idMeal;

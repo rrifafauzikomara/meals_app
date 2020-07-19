@@ -117,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: snapshot.data.meals.length > 5 ? 5 : snapshot.data.meals.length,
+                  itemCount: snapshot.data.meals.length > 5
+                      ? 5
+                      : snapshot.data.meals.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
                       mealsName: snapshot.data.meals[index].strMeal,
@@ -180,7 +182,9 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: snapshot.data.meals.length > 5 ? 5 : snapshot.data.meals.length,
+                  itemCount: snapshot.data.meals.length > 5
+                      ? 5
+                      : snapshot.data.meals.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
                       mealsName: snapshot.data.meals[index].strMeal,

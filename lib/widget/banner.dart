@@ -8,12 +8,13 @@ import 'package:mealsapp/network/model/categories.dart';
 import 'loading.dart';
 
 class CustomBanner extends StatefulWidget {
-
   final Function(int index, CarouselPageChangedReason reason) onPageChanged;
   final AsyncSnapshot<CategoriesResult> snapshot;
   final int currentIndex;
 
-  const CustomBanner({Key key, this.onPageChanged, this.snapshot, this.currentIndex}) : super(key: key);
+  const CustomBanner(
+      {Key key, this.onPageChanged, this.snapshot, this.currentIndex})
+      : super(key: key);
 
   @override
   _CustomBannerState createState() => _CustomBannerState();
@@ -39,7 +40,8 @@ class _CustomBannerState extends State<CustomBanner> {
               for (var i = 0; i < widget.snapshot.data.categories.length; i++)
                 Container(
                   child: CachedNetworkImage(
-                    imageUrl: widget.snapshot.data.categories[i].strCategoryThumb,
+                    imageUrl:
+                        widget.snapshot.data.categories[i].strCategoryThumb,
                     width: Sizes.width(context),
                     fit: BoxFit.fill,
                     placeholder: (context, url) => LoadingIndicator(),

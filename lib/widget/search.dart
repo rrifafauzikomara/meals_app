@@ -37,7 +37,7 @@ class CustomSearch extends StatelessWidget {
                 right: 6.0,
               ),
               child: Text(
-                'Find Place',
+                'Find Food',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: Sizes.dp16(context),
